@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.AnimationreviewMapper" >
+<resultMap type="com.pojo.Animationreview" id="AReviewUserResultMap">
+<id column="ID" property="id" jdbcType="INTEGER"/>
+<result column="UserID" property="userid" jdbcType="INTEGER"/>
+<result column="AID" property="aid" jdbcType="INTEGER"/>
+<result column="content" property="content" jdbcType="VARCHAR"/>
+<result column="time" property="time" jdbcType="TIMESTAMP" />
+<collection property="secondreviews" ofType="com.pojo.Animationsecondreview" column="ID" select="com.dao.AnimationsecondreviewMapper.selectSReviewByRid"/>
+</resultMap>
+
+<insert id="insertAReview" parameterType="com.pojo.Animationreview">
+<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+select LAST_INSERT_ID()
+</selectKey>
+insert into animation_review(UserID,AID,content,time)
+values(#{userid,jdbcType=INTEGER},
+#{aid,jdbcType=INTEGER},#{content,jdbcType=VARCHAR},#{time,jdbcType=TIMESTAMP})
+</insert>
+
+<select id="selectReviewByAid" parameterType="java.lang.Integer" resultMap="AReviewUserResultMap">
+select 
+animation_review.*,user.name username,user.picture userpicture
+from animation_review join user on animation_review.userid=user.ID
+where animation_review.AID=#{aid}
+order by animation_review.time desc
+</select>
+</mapper>
