@@ -320,4 +320,30 @@
       category = #{category,jdbcType=INTEGER}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  
+ <select id="selectBySearch"  resultType="com.pojo.Animation">
+ select a.*,u.name username,c.`name` categoryname
+ from animation a LEFT JOIN `user` u on a.userid=u.ID
+                         JOIN  animationcategory c on a.category=c.ID
+<where>  
+<if test="search_title!=null and search_title!=''">
+     and a.title like '%${search_title}%'
+</if>
+<if test="search_user!=null and search_user!=''">
+     and u.name like '%${search_user}%'
+</if>
+<if test="search_category!=0">
+     and a.category= #{search_category}
+</if>
+<if test="start_time!=null">
+ and DATE_FORMAT(a.createtime, '%Y-%m-%d')  &gt;=  DATE_FORMAT(#{start_time}, '%Y-%m-%d')
+</if>
+<if test="end_time!=null">
+ and DATE_FORMAT(a.createtime, '%Y-%m-%d') &lt;=  DATE_FORMAT(#{end_time}, '%Y-%m-%d')
+</if>
+<if test="search_status!=3">
+and a.status= #{search_status}
+</if>
+ </where>
+  </select>
 </mapper>

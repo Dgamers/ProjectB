@@ -5,23 +5,25 @@ import java.util.List;
 
 import com.pojo.User;
 
-public interface UserService  {
-	
-	boolean isExistUser(String email);
-	
+public interface UserService
+{
+
+	int deleteByPrimaryKey(Integer id);
+
 	User findByEmail(String email);
-   
+
+	int insert(User record);
+
+	int insertSelective(User record);
+
+	boolean isExistUser(String email);
+
+	List<User> selectByPage(int pageSize, int pagenum, String search_name, String search_email, String search_phone,
+	        Date start_time, Date end_time, Integer search_status);
+
 	User selectByPrimaryKey(Integer id);
-	
-    int insert(User record);
 
-    int insertSelective(User record);
-    
-    int deleteByPrimaryKey(Integer id);
-    
-    int updateByPrimaryKeySelective(User record);
+	int updateByPrimaryKey(User record);
 
-    int updateByPrimaryKey(User record);
-    
-    List<User>selectByPage(int pageSize,int pagenum,String search_name,String search_email,String search_phone,Date start_time,Date end_time);
+	int updateByPrimaryKeySelective(User record);
 }

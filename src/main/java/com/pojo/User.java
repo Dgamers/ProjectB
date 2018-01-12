@@ -7,7 +7,7 @@ public class User {
 
     private String name;
 
-    private String sex;
+    private Integer sex;
 
     private String email;
 
@@ -47,12 +47,12 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public String getEmail() {

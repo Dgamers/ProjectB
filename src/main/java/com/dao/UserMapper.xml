@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.pojo.User" >
     <id column="ID" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="emailshow" property="emailshow" jdbcType="INTEGER" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
@@ -110,7 +110,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.pojo.User" >
-<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+  <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
 select LAST_INSERT_ID()
 </selectKey>
     insert into user (ID, name, sex, 
@@ -118,14 +118,14 @@ select LAST_INSERT_ID()
       phoneshow, password, picture, 
       remarks, realname, createtime, 
       updatetime, status)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
       #{email,jdbcType=VARCHAR}, #{emailshow,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
       #{phoneshow,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, 
       #{remarks,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.pojo.User" >
- <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+  <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
 select LAST_INSERT_ID()
 </selectKey>
     insert into user
@@ -181,7 +181,7 @@ select LAST_INSERT_ID()
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
+        #{sex,jdbcType=INTEGER},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -234,7 +234,7 @@ select LAST_INSERT_ID()
         name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=VARCHAR},
+        sex = #{record.sex,jdbcType=INTEGER},
       </if>
       <if test="record.email != null" >
         email = #{record.email,jdbcType=VARCHAR},
@@ -278,7 +278,7 @@ select LAST_INSERT_ID()
     update user
     set ID = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
       email = #{record.email,jdbcType=VARCHAR},
       emailshow = #{record.emailshow,jdbcType=INTEGER},
       phone = #{record.phone,jdbcType=VARCHAR},
@@ -301,7 +301,7 @@ select LAST_INSERT_ID()
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="sex != null" >
-        sex = #{sex,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=INTEGER},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -342,7 +342,7 @@ select LAST_INSERT_ID()
   <update id="updateByPrimaryKey" parameterType="com.pojo.User" >
     update user
     set name = #{name,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
       email = #{email,jdbcType=VARCHAR},
       emailshow = #{emailshow,jdbcType=INTEGER},
       phone = #{phone,jdbcType=VARCHAR},
