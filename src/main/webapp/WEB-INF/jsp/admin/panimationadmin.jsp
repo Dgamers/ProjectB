@@ -164,7 +164,7 @@ $(function() {
     			            	            },
     			            	            dataType : 'JSON',
     			            	            success : function (data) {
-     			            	                $("#panimationsinfo").bootstrapTable('removeByUniqueId',data['row']); 
+     			            	                $("#panimationsinfo").bootstrapTable('removeByUniqueId',data['row']['id']); 
     			            	            }
     			            	        });
     						        },
