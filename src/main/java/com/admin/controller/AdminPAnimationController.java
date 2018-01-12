@@ -62,7 +62,8 @@ public class AdminPAnimationController
 	@RequestMapping("/initpanimationsadmin")
 	public String initPAnimationsAdmin(HttpSession session, Model model)
 	{
-				Administrator administrator=(Administrator) session.getAttribute("admin");
+
+	Administrator administrator=(Administrator) session.getAttribute("admin");
 		if(administrator==null)
 			return "redirect:/admin/initlogin";
 		List<Animationcategory> category = animationcategoryService.selectAllCatagory();
@@ -119,9 +120,11 @@ public class AdminPAnimationController
 		notify.setCreatetime(new Date());
 		notify.setUpdatetime(new Date());
 		notifyService.insertnotify(notify);
-		TableResult<Integer> result = new TableResult<Integer>();
-		result.setRow(Id);
-		pendinganimationService.deleteByPrimaryKey(Id);
+		TableResult<Pendinganimation> result = new TableResult<Pendinganimation>();
+		result.setRow(pendinganimation);
+		pendinganimationService.deleteByPrimaryKey(pendinganimation.getId());
 		return JSON.toJSONString(result);
 	}
+
+
 }
