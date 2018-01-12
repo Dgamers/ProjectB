@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.pojo.Administrator;
 import com.pojo.Animation;
 import com.pojo.Animationcategory;
+import com.pojo.Notify;
 import com.service.AnimationService;
 import com.service.AnimationcategoryService;
+import com.service.NotifyService;
 import com.utils.TableResult;
 
 @Controller
@@ -32,6 +35,45 @@ public class AdminAnimationController
 	@Autowired
 	private AnimationService animationService;
 
+	@Autowired
+	private NotifyService notifyService;
+
+	@RequestMapping(value = "/changestatus", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public String changeStatus(Integer Id, HttpSession session)
+	{
+		Animation animation = animationService.selectByPrimaryKey(Id);
+		Administrator administrator = (Administrator) session.getAttribute("admin");
+		if (animation.getStatus() == 0)
+		{
+			animation.setStatus(1);
+			Notify notify = new Notify();
+			notify.setAdmin(administrator.getId());
+			notify.setTitle("作品恢复");
+			notify.setContent("您的名为《" + animation.getTitle() + "》作品已恢复在线状态");
+			notify.setUser(animation.getUserid());
+			notify.setCreatetime(new Date());
+			notify.setUpdatetime(new Date());
+			notifyService.insertnotify(notify);
+		}
+		else
+		{
+			animation.setStatus(0);
+			Notify notify = new Notify();
+			notify.setAdmin(administrator.getId());
+			notify.setTitle("作品下线");
+			notify.setContent("您的名为《" + animation.getTitle() + "》作品已下线,如有疑问请联系管理员");
+			notify.setUser(animation.getUserid());
+			notify.setCreatetime(new Date());
+			notify.setUpdatetime(new Date());
+			notifyService.insertnotify(notify);
+		}
+		animationService.updateByPrimaryKeySelective(animation);
+		TableResult<Animation> result = new TableResult<Animation>();
+		result.setRow(animation);
+		return JSON.toJSONString(result);
+	}
+
 	@RequestMapping(value = "/getanimations", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String getPAnimations(Integer pageSize, Integer pageNumber,
@@ -39,10 +81,12 @@ public class AdminAnimationController
 	        @RequestParam(value = "search_user", required = false) String search_user,
 	        @RequestParam(value = "search_category", required = false) Integer search_category,
 	        @RequestParam(value = "start_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date start_time,
-	        @RequestParam(value = "end_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date end_time)
+	        @RequestParam(value = "end_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date end_time,
+	        Integer search_status)
+
 	{
 		List<Animation> animations = animationService.selectBySearch(pageSize, pageNumber, search_title, search_user,
-		        search_category, start_time, end_time);
+		        search_category, start_time, end_time, search_status);
 		PageInfo<Animation> info = new PageInfo<Animation>(animations);
 		return JSON.toJSONString(new TableResult<Animation>(animations, info.getTotal()));
 	}

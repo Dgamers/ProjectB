@@ -26,7 +26,7 @@ public interface AnimationMapper
 
 	List<Animation> selectBySearch(@Param("search_title") String search_title, @Param("search_user") String search_user,
 	        @Param("search_category") Integer search_category, @Param("start_time") Date start_time,
-	        @Param("end_time") Date end_time);
+	        @Param("end_time") Date end_time, @Param("search_status") Integer search_status);
 
 	int updateByExample(@Param("record") Animation record, @Param("example") AnimationExample example);
 

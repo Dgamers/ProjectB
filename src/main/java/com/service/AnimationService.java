@@ -19,7 +19,7 @@ public interface AnimationService
 	Animation selectByPrimaryKey(Integer id);
 
 	List<Animation> selectBySearch(int limit, int pagenum, String search_title, String search_user,
-	        Integer search_category, Date start_time, Date end_time);
+	        Integer search_category, Date start_time, Date end_time, Integer search_status);
 
 	List<Animation> selectByuserId(int userid, int pagenum, int order);
 

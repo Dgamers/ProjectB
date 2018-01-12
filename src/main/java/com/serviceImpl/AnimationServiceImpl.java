@@ -80,11 +80,11 @@ public class AnimationServiceImpl implements AnimationService
 
 	@Override
 	public List<Animation> selectBySearch(int limit, int pagenum, String search_title, String search_user,
-	        Integer search_category, Date start_time, Date end_time)
+	        Integer search_category, Date start_time, Date end_time, Integer search_status)
 	{
 		PageHelper.startPage(pagenum, limit, true);
 		List<Animation> pendinganimations = animationMapper.selectBySearch(search_title, search_user, search_category,
-		        start_time, end_time);
+		        start_time, end_time, search_status);
 		if (pendinganimations.size() != 0)
 		{
 			return pendinganimations;

@@ -12,7 +12,7 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-table.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.min.js"></script>
-<title>Login</title>
+<title>投稿管理</title>
 <script type="text/javascript">
 function changeDateFormat(cellval) {
     var dateVal = cellval + "";

@@ -12,7 +12,7 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-table.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.min.js"></script>
-<title>Login</title>
+<title>用户管理</title>
 <script type="text/javascript">
 function changeDateFormat(cellval) {
     var dateVal = cellval + "";
@@ -151,6 +151,7 @@ $(function() {
         	search_phone:$("#search_phone").val(),
         	start_time:$("#start_time").val(),
         	end_time:$("#end_time").val(),
+        	search_status:$("#search_status").val()
         };
     }
     $("#start_search").click(function(){
@@ -197,7 +198,17 @@ $(function() {
 						<div class="col-sm-3">
 							<input type="date" class="form-control" id="end_time">
 						</div>
-						<div class="col-sm-3" style="text-align: left;">
+					<label class="control-label col-sm-1" for="search_status">动画状态</label>
+					 <div class="col-sm-1">
+						<select id="search_status" name="search_status"
+								class="selectpicker show-tick form-control" 
+								data-live-search="false">
+								<option value="3">无</option>
+								<option value="1">正常</option>
+                                <option value="0">冻结</option>
+							</select>
+						</div>
+						<div class="col-sm-1" style="text-align: left;">
 							<button type="button" style="margin-left: 100px" id="start_search"
 								class="btn btn-primary">查询</button>
 						</div>

@@ -12,7 +12,7 @@
 	src="${pageContext.request.contextPath}/js/bootstrap-table.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.min.js"></script>
-<title>Login</title>
+<title>动画管理</title>
 <script type="text/javascript">
 function changeDateFormat(cellval) {
     var dateVal = cellval + "";
@@ -29,7 +29,7 @@ function changeDateFormat(cellval) {
     }
 }
 $(function() {
-    $('#panimationsinfo').bootstrapTable({
+    $('#animationsinfo').bootstrapTable({
         url: '${pageContext.request.contextPath}/admin/animation/getanimations',  //请求后台的URL（*）
         contentType : 'application/x-www-form-urlencoded',
         method: 'get',                      //请求方式（*）
@@ -115,7 +115,60 @@ $(function() {
         {
             field: 'categoryname',
             title: '类别',
-        },]
+        },{
+        	field:'status',
+        	title:'状态',
+            formatter : function (value, row, index) {
+                if (value == 1) {
+                    return '正常';
+                }
+                if (value== 0) {
+                    return '下线';
+                }
+                return value;   
+        }
+        },        {
+            field: 'action',
+            title: '操作',
+            events: window.operateEvents = {
+            	    'click .btn-xs':function (e, value, row, index){
+						$.confirm({
+						    title: '确认改变此动画状态？',
+						    content: '',
+						    buttons: {
+						          确认: function () {
+			            	        $.ajax({
+			            	            type : "get",
+			            	            url : "${pageContext.request.contextPath}/admin/animation/changestatus",
+			            	            data : {
+			            	                Id : row['id']
+			            	            },
+			            	            dataType : 'JSON',
+			            	            success : function (data) {
+			            	            	row=data['row'];
+			            	                $("#animationsinfo").bootstrapTable('updateRow', {
+			            	                	 index:index,
+			            	                     row:row,
+			            	                });
+			            	            }
+			            	        });
+						        },
+						       关闭: function () { }
+						    }
+						});
+
+            	    }     	    		
+            	    },
+            formatter : function (value, row, index) {
+                if (row['status']== 1) {
+                    return '<button type="button" class="btn btn-default btn-xs">下线作品</button>';
+                }
+                if (row['status']== 0) {
+                    return '<button type="button" class="btn btn-default btn-xs">恢复作品状态</button>';
+                }
+                return value;
+            }
+        }]
     });
 	
     function queryParams(params) {
@@ -127,14 +180,15 @@ $(function() {
         	search_category:$("#search_category ").val(),
         	start_time:$("#start_time").val(),
         	end_time:$("#end_time").val(),
+        	search_status:$("#search_status").val()
         };
     }
 $("#close").click(function(){
 	$('#Modal iframe').removeAttr('src');
 });
 $("#start_search").click(function(){
-	$("#panimationsinfo").bootstrapTable('removeAll');
-	$('#panimationsinfo').bootstrapTable('refresh');  
+	$("#animationsinfo").bootstrapTable('removeAll');
+	$('#animationsinfo').bootstrapTable('refresh');  
 });
 });
 
@@ -181,7 +235,17 @@ $("#start_search").click(function(){
 						<div class="col-sm-3">
 							<input type="date" class="form-control" id="end_time">
 						</div>
-						<div class="col-sm-3" style="text-align: left;">
+						 <label class="control-label col-sm-1" for="search_status">动画状态</label>
+					 <div class="col-sm-1">
+						<select id="search_status" name="search_status"
+								class="selectpicker show-tick form-control" 
+								data-live-search="false">
+								<option value="3">无</option>
+								<option value="1">正常</option>
+                                <option value="0">下线</option>
+							</select>
+						</div>
+						<div class="col-sm-1" style="text-align: left;">
 							<button type="button" style="margin-left: 100px" id="start_search"
 								class="btn btn-primary">查询</button>
 						</div>
@@ -189,7 +253,7 @@ $("#start_search").click(function(){
 				</form>
 			</div>
 		</div>
-<table id="panimationsinfo"></table>
+<table id="animationsinfo"></table>
 </div>
 <div class="modal fade bs-example-modal-lg" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
