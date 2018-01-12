@@ -21,7 +21,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="${pageContext.request.contextPath }/admin/user/inituseradmin">用户管理 </a></li>
 				<li><a href="${pageContext.request.contextPath }/admin/panimation/initpanimationsadmin">投稿管理</a></li>
-				<li><a href="#">动画管理</a></li>
+				<li><a href="${pageContext.request.contextPath }/admin/animation/initanimationsadmin">动画管理</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">

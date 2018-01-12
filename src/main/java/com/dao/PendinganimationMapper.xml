@@ -275,7 +275,7 @@
   
   <select id="selectBySearch"  resultType="com.pojo.Pendinganimation">
  select p.*,u.name username,c.`name` categoryname
- from pendinganimation p JOIN `user` u on p.userID=u.ID
+ from pendinganimation p LEFT　JOIN `user` u on p.userID=u.ID
                          JOIN  animationcategory c on p.category=c.ID
 <where>  
 <if test="search_title!=null and search_title!=''">

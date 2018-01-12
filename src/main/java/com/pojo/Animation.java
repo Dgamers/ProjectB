@@ -2,124 +2,174 @@ package com.pojo;
 
 import java.util.Date;
 
-public class Animation {
-    private Integer id;
+public class Animation
+{
+	private Integer id;
 
-    private Integer userid;
+	private Integer userid;
 
-    private String title;
+	private String username;
 
-    private String content;
+	private String title;
 
-    private String picture;
+	private String content;
 
-    private String address;
+	private String picture;
 
-    private Integer status;
+	private String address;
 
-    private Float grade;
+	private Integer status;
 
-    private Integer download;
+	private Float grade;
 
-    private Date createtime;
+	private Integer download;
 
-    private Date updatetime;
+	private Date createtime;
 
-    private Integer category;
+	private Date updatetime;
 
-    public Integer getId() {
-        return id;
-    }
+	private Integer category;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	private String categoryname;
 
-    public Integer getUserid() {
-        return userid;
-    }
+	public String getAddress()
+	{
+		return address;
+	}
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
+	public Integer getCategory()
+	{
+		return category;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getCategoryname()
+	{
+		return categoryname;
+	}
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
+	public String getContent()
+	{
+		return content;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public Date getCreatetime()
+	{
+		return createtime;
+	}
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
+	public Integer getDownload()
+	{
+		return download;
+	}
 
-    public String getPicture() {
-        return picture;
-    }
+	public Float getGrade()
+	{
+		return grade;
+	}
 
-    public void setPicture(String picture) {
-        this.picture = picture == null ? null : picture.trim();
-    }
+	public Integer getId()
+	{
+		return id;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public String getPicture()
+	{
+		return picture;
+	}
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
+	public Integer getStatus()
+	{
+		return status;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public String getTitle()
+	{
+		return title;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public Date getUpdatetime()
+	{
+		return updatetime;
+	}
 
-    public Float getGrade() {
-        return grade;
-    }
+	public Integer getUserid()
+	{
+		return userid;
+	}
 
-    public void setGrade(Float grade) {
-        this.grade = grade;
-    }
+	public String getUsername()
+	{
+		return username;
+	}
 
-    public Integer getDownload() {
-        return download;
-    }
+	public void setAddress(String address)
+	{
+		this.address = address == null ? null : address.trim();
+	}
 
-    public void setDownload(Integer download) {
-        this.download = download;
-    }
+	public void setCategory(Integer category)
+	{
+		this.category = category;
+	}
 
-    public Date getCreatetime() {
-        return createtime;
-    }
+	public void setCategoryname(String categoryname)
+	{
+		this.categoryname = categoryname;
+	}
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
+	public void setContent(String content)
+	{
+		this.content = content == null ? null : content.trim();
+	}
 
-    public Date getUpdatetime() {
-        return updatetime;
-    }
+	public void setCreatetime(Date createtime)
+	{
+		this.createtime = createtime;
+	}
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
+	public void setDownload(Integer download)
+	{
+		this.download = download;
+	}
 
-    public Integer getCategory() {
-        return category;
-    }
+	public void setGrade(Float grade)
+	{
+		this.grade = grade;
+	}
 
-    public void setCategory(Integer category) {
-        this.category = category;
-    }
+	public void setId(Integer id)
+	{
+		this.id = id;
+	}
+
+	public void setPicture(String picture)
+	{
+		this.picture = picture == null ? null : picture.trim();
+	}
+
+	public void setStatus(Integer status)
+	{
+		this.status = status;
+	}
+
+	public void setTitle(String title)
+	{
+		this.title = title == null ? null : title.trim();
+	}
+
+	public void setUpdatetime(Date updatetime)
+	{
+		this.updatetime = updatetime;
+	}
+
+	public void setUserid(Integer userid)
+	{
+		this.userid = userid;
+	}
+
+	public void setUsername(String username)
+	{
+		this.username = username;
+	}
+
 }

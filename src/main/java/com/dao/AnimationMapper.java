@@ -1,30 +1,38 @@
 package com.dao;
 
-import com.pojo.Animation;
-import com.pojo.AnimationExample;
+import java.util.Date;
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
-public interface AnimationMapper {
-    int countByExample(AnimationExample example);
+import com.pojo.Animation;
+import com.pojo.AnimationExample;
 
-    int deleteByExample(AnimationExample example);
+public interface AnimationMapper
+{
+	int countByExample(AnimationExample example);
 
-    int deleteByPrimaryKey(Integer id);
+	int deleteByExample(AnimationExample example);
 
-    int insert(Animation record);
+	int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(Animation record);
+	int insert(Animation record);
 
-    List<Animation> selectByExample(AnimationExample example);
+	int insertSelective(Animation record);
 
-    Animation selectByPrimaryKey(Integer id);
+	List<Animation> selectByExample(AnimationExample example);
 
-    int updateByExampleSelective(@Param("record") Animation record, @Param("example") AnimationExample example);
+	Animation selectByPrimaryKey(Integer id);
 
-    int updateByExample(@Param("record") Animation record, @Param("example") AnimationExample example);
+	List<Animation> selectBySearch(@Param("search_title") String search_title, @Param("search_user") String search_user,
+	        @Param("search_category") Integer search_category, @Param("start_time") Date start_time,
+	        @Param("end_time") Date end_time);
 
-    int updateByPrimaryKeySelective(Animation record);
+	int updateByExample(@Param("record") Animation record, @Param("example") AnimationExample example);
 
-    int updateByPrimaryKey(Animation record);
+	int updateByExampleSelective(@Param("record") Animation record, @Param("example") AnimationExample example);
+
+	int updateByPrimaryKey(Animation record);
+
+	int updateByPrimaryKeySelective(Animation record);
 }

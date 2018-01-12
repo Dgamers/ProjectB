@@ -30,7 +30,7 @@ function changeDateFormat(cellval) {
 }
 $(function() {
     $('#panimationsinfo').bootstrapTable({
-        url: '${pageContext.request.contextPath}/admin/panimation/getpanimations',  //请求后台的URL（*）
+        url: '${pageContext.request.contextPath}/admin/animation/getanimations',  //请求后台的URL（*）
         contentType : 'application/x-www-form-urlencoded',
         method: 'get',                      //请求方式（*）
         toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -115,66 +115,7 @@ $(function() {
         {
             field: 'categoryname',
             title: '类别',
-        },{
-        
-        	field:'action',
-        	title:'操作',
-            formatter : function (value, row, index) {
-             return[
-                    '<button type="button" id="pass" class="btn btn-default btn-xs">通过审核</button>&nbsp;',     
-            	    '<button type="button" id="unpass" class="btn btn-default btn-xs">不通过</button>'
-             ].join("")
-            },
-            events: window.operateEvents = {
-            	    'click #pass':function (e, value, row, index){
-					$.confirm({
-						    title: '确认通过审核？',
-						    content: '',
-						    buttons: {
-						          确认: function () {
-			            	        $.ajax({
-			            	            type : "get",
-			            	            url : "${pageContext.request.contextPath}/admin/panimation/pass",
-			            	            data : {
-			            	                Id : row['id']
-			            	            },
-			            	            dataType : 'JSON',
-			            	            success : function (data) {
- 			            	                $("#panimationsinfo").bootstrapTable('removeByUniqueId',data['row']['id']); 
-			            	            }
-			            	        });
-						        },
-						       关闭: function () { }
-						    }
-						}); 
-
-            	    },
-            	    'click #unpass':function (e, value, row, index){
-    					$.confirm({
-    						    title: '确认不通过审核？',
-    						    content: '<input type="text" id="reason" class="tele form-control" placeholder="不过审原因">',
-    						    buttons: {
-    						          确认: function () {
-    			            	        $.ajax({
-    			            	            type : "get",
-    			            	            url : "${pageContext.request.contextPath}/admin/panimation/unpass",
-    			            	            data : {
-    			            	                Id : row['id'],
-    			            	                reason:$('#reason').val()
-    			            	            },
-    			            	            dataType : 'JSON',
-    			            	            success : function (data) {
-     			            	                $("#panimationsinfo").bootstrapTable('removeByUniqueId',data['row']); 
-    			            	            }
-    			            	        });
-    						        },
-    						       关闭: function () { }
-    						    }
-    						}); 
-
-                	    },
-            	    },
-        }]
+        },]
     });
 	
     function queryParams(params) {
