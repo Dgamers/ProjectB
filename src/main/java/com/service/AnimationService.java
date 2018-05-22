@@ -14,7 +14,7 @@ public interface AnimationService
 
 	int insertSelective(Animation record);
 
-	List<Animation> selectByPage(int pagenum, int type, int order);
+	List<Animation> selectByPage(String keyword,int pagenum, int type, int order);
 
 	Animation selectByPrimaryKey(Integer id);
 

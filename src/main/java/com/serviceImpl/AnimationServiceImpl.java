@@ -42,28 +42,10 @@ public class AnimationServiceImpl implements AnimationService
 	}
 
 	@Override
-	public List<Animation> selectByPage(int pagenum, int type, int order)
+	public List<Animation> selectByPage(String keyword,int pagenum, int type, int order)
 	{
-		AnimationExample example = new AnimationExample();
-		Criteria criteria = example.createCriteria();
-		if (type != 0)
-		{
-			criteria.andCategoryEqualTo(type);
-		}
-		if (order == 1)
-		{
-			example.setOrderByClause("createtime desc");
-		}
-		if (order == 2)
-		{
-			example.setOrderByClause("download desc");
-		}
-		if (order == 3)
-		{
-			example.setOrderByClause("grade desc");
-		}
 		PageHelper.startPage(pagenum, 4, true);
-		List<Animation> list = animationMapper.selectByExample(example);
+		List<Animation> list = animationMapper.selectByType(keyword,type, order);
 		if (list.size() != 0)
 		{
 			return list;

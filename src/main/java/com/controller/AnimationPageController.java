@@ -24,11 +24,13 @@ import com.pojo.Animation;
 import com.pojo.Animationreview;
 import com.pojo.Animationscore;
 import com.pojo.Animationsecondreview;
+import com.pojo.Notify;
 import com.pojo.User;
 import com.service.AnimationScoreService;
 import com.service.AnimationService;
 import com.service.AnimationreviewService;
 import com.service.AnimationsecondreviewService;
+import com.service.NotifyService;
 import com.service.UserService;
 import com.utils.Result;
 import com.utils.ScoreResult;
@@ -51,6 +53,9 @@ public class AnimationPageController {
 	
 	@Autowired 
 	private AnimationsecondreviewService animationsecondreviewService;
+	
+	@Autowired
+	private NotifyService notifyService;
 	
 	
 	@RequestMapping("/page")
@@ -133,6 +138,16 @@ public class AnimationPageController {
 		animationreviewService.insertAReview(review);
 	    review.setUsername(user.getName());
 	    review.setUserpicture(user.getPicture());
+	    Animation animation=animationService.selectByPrimaryKey(review.getAid());
+	    if(user.getId()!=animation.getUserid()) {
+		    Notify notify=new Notify();
+		    notify.setTitle("动画评论");
+		    notify.setContent("用户"+user.getName()+"在您的名《"+animation.getTitle()+"》评论了，请查看<br><a href='../animation/page?aid="+animation.getId()+"'>点击连接</a>");
+		    notify.setUser(animation.getUserid());
+		    notify.setCreatetime(new Date());
+		    notify.setUpdatetime(new Date());
+		    notifyService.insertnotify(notify);
+	    }
 		return JSON.toJSONString(review);
 	}
 	
@@ -150,6 +165,18 @@ public class AnimationPageController {
 		User reuser= userService.selectByPrimaryKey(secondreview.getReuserid());
 		secondreview.setReusername(reuser.getName());
 		secondreview.setReuserpicture(reuser.getPicture());
+		if(user.getId()!=reuser.getId()) {
+			Animationreview review=animationreviewService.selectByPrimaryKey(secondreview.getRid());
+		    Animation animation=animationService.selectByPrimaryKey(review.getAid());
+		    Notify notify=new Notify();
+		    notify.setTitle("动画回复");
+		    notify.setContent("用户"+user.getName()+"在名为《"+animation.getTitle()+"》回复了您，请查看<br><a href='../animation/page?aid="+animation.getId()+"'>点击连接</a>");
+		    notify.setUser(reuser.getId());
+		    notify.setCreatetime(new Date());
+		    notify.setUpdatetime(new Date());
+		    notifyService.insertnotify(notify);
+		}
+
     return JSON.toJSONString(secondreview);
 	}
 }

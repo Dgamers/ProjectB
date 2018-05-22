@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.pojo.Animation;
@@ -36,5 +37,26 @@ public class UserPageController {
 		model.addAttribute("order",order);
 		model.addAttribute("liInfo", liInfo);
 		return "user/userpage";
+	}
+	
+	@RequestMapping("/updateainfo")
+	@ResponseBody
+	public String inituserpage(Integer animationid,String title,String content) {
+		Animation animation=new Animation();
+		animation.setId(animationid);
+		animation.setTitle(title);
+		animation.setContent(content);
+		animationService.updateByPrimaryKeySelective(animation);
+		return "success";	
+	}
+	
+	@RequestMapping("/changestatus")
+	@ResponseBody
+	public String inituserpage(Integer animationid,Integer status) {
+		Animation animation=new Animation();
+		animation.setId(animationid);
+        animation.setStatus(status);
+		animationService.updateByPrimaryKeySelective(animation);
+		return "success";	
 	}
 }

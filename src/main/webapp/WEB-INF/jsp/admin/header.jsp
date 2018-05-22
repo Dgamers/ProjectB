@@ -22,15 +22,15 @@
 				<li><a href="${pageContext.request.contextPath }/admin/user/inituseradmin">用户管理 </a></li>
 				<li><a href="${pageContext.request.contextPath }/admin/panimation/initpanimationsadmin">投稿管理</a></li>
 				<li><a href="${pageContext.request.contextPath }/admin/animation/initanimationsadmin">动画管理</a></li>
+				<li><a href="${pageContext.request.contextPath }/admin/learn/initedit">学习专题管理</a></li>
+				<li><a href="${pageContext.request.contextPath }/admin/category/initcategory">类别管理</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
           <a  href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="username">${admin.name}</span><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">个人信息</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">退出登陆</a></li>
+            <li><a href="${pageContext.request.contextPath }/admin/outlogin">退出登陆</a></li>
           </ul>
         </li>
 			</ul>

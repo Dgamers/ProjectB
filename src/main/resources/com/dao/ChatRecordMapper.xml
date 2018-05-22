@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ChatRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.ChatRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="chatroom" property="chatroom" jdbcType="INTEGER" />
+    <result column="sender" property="sender" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="record" property="record" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.pojo.ChatRecord">
+  insert into chat_record(chatroom,sender,createtime,record)
+  values(#{chatroom,jdbcType=INTEGER},#{sender,jdbcType=INTEGER},
+  #{createtime,jdbcType=TIMESTAMP},#{record,jdbcType=LONGVARCHAR})
+  </insert>
+  
+  <select id="selectByRoomid" resultType="com.pojo.ChatRecord">
+  select 
+  *
+  from
+  chat_record
+  where chatroom=#{roomid}
+  order by createtime
+  </select>
+</mapper>

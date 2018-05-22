@@ -50,9 +50,9 @@ public class AdminPAnimationController
 	        @RequestParam(value = "search_user", required = false) String search_user,
 	        @RequestParam(value = "search_category", required = false) Integer search_category,
 	        @RequestParam(value = "start_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date start_time,
-	        @RequestParam(value = "end_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date end_time)
+	        @RequestParam(value = "end_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date end_time)throws Exception
 	{
-		System.out.println(search_category);
+		search_title=new String(search_title.getBytes("ISO8859-1"), "UTF-8");
 		List<Pendinganimation> pendinganimations = pendinganimationService.selectByPage(pageSize, pageNumber,
 		        search_title, search_user, search_category, start_time, end_time);
 		PageInfo<Pendinganimation> info = new PageInfo<Pendinganimation>(pendinganimations);
@@ -77,7 +77,7 @@ public class AdminPAnimationController
 	{
 		Pendinganimation pendinganimation = pendinganimationService.selectByPrimaryKey(Id);
 		Animation animation = new Animation();
-		animation.setUserid(pendinganimation.getId());
+		animation.setUserid(pendinganimation.getUserid());
 		animation.setTitle(pendinganimation.getTitle());
 		animation.setContent(pendinganimation.getContent());
 		animation.setPicture(pendinganimation.getPicture());
@@ -94,7 +94,7 @@ public class AdminPAnimationController
 		notify.setAdmin(administrator.getId());
 		notify.setUser(pendinganimation.getUserid());
 		notify.setTitle("通过审核");
-		notify.setContent("您的名为《" + pendinganimation.getTitle() + "》已经通过审核");
+		notify.setContent("您的名为《" + pendinganimation.getTitle() + "》已经通过审核<br><a href='../animation/page?aid="+animation.getId()+"'>点击连接</a>");
 		notify.setCreatetime(new Date());
 		notify.setUpdatetime(new Date());
 		notifyService.insertnotify(notify);

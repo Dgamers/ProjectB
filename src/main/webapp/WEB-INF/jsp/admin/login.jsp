@@ -29,7 +29,7 @@
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon">密&nbsp;&nbsp;&nbsp;码</span> <input id="password"
-								name="password" type="text" class="form-control" />
+								name="password" type="password" class="form-control" />
 						</div>
 					</div>
 					<div class="form-group">

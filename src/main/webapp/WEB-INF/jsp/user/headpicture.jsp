@@ -5,10 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../common.jspf"%>
-  <script type="text/javascript" src="${pageContext.request.contextPath}/js/cropper.min.js"></script>
-  <script type="text/javascript" src="${pageContext.request.contextPath}/js/main.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/cropper.min.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css"> 
+  <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/cropper/js/cropper.min.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/cropper/js/main.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/cropper/css/cropper.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/cropper/css/main.css"> 
 <style>
 </style>
 

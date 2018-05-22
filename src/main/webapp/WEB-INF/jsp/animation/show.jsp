@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../common.jspf"%>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/boostrapstars/js/star-rating.min.js"></script>
+	src="${pageContext.request.contextPath}/plugins/boostrapstars/js/star-rating.min.js"></script>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/boostrapstars/css/star-rating.min.css" />
-<script src="${pageContext.request.contextPath}/boostrapstars/js/locales/zh.js"></script>
+	href="${pageContext.request.contextPath}/plugins/boostrapstars/css/star-rating.min.css" />
+<script src="${pageContext.request.contextPath}/plugins/boostrapstars/js/locales/zh.js"></script>
 <script type="text/javascript">
 function jsonDateFormat(jsonDate) {
     try {
@@ -200,6 +200,8 @@ function bindclick(){
 		<div class="row">
 			<div class="col-md-9" style=" border:1px solid #EEEEEE">
 			<h2>${animation.title}</h2>
+		<span class="glyphicon glyphicon-time" ><fmt:formatDate type="both" value="${animation.createtime}" /></span>
+        <span class="glyphicon glyphicon-download-alt" >${animation.download}</span>
 				<div class="embed-responsive embed-responsive-16by9" >
 				  <iframe  class="embed-responsive-item" src="${animation.address}"></iframe>
 				</div>

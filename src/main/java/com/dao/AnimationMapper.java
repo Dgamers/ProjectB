@@ -22,6 +22,8 @@ public interface AnimationMapper
 
 	List<Animation> selectByExample(AnimationExample example);
 
+	List<Animation> selectByType(@Param("keyword")String keyword,@Param("type")int type, @Param("order")int order);
+	
 	Animation selectByPrimaryKey(Integer id);
 
 	List<Animation> selectBySearch(@Param("search_title") String search_title, @Param("search_user") String search_user,

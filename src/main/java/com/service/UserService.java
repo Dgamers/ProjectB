@@ -3,6 +3,8 @@ package com.service;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.pojo.User;
 
 public interface UserService
@@ -26,4 +28,6 @@ public interface UserService
 	int updateByPrimaryKey(User record);
 
 	int updateByPrimaryKeySelective(User record);
+	
+	List<User>selectByjoiner(List<Integer>joinerid);
 }

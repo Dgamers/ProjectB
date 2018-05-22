@@ -135,4 +135,9 @@ public class UserServiceImpl implements UserService
 		return userMapper.updateByPrimaryKeySelective(record);
 	}
 
+	@Override
+	public List<User> selectByjoiner(List<Integer> joinerid) {
+		return userMapper.selectByjoiner(joinerid);
+	}
+
 }

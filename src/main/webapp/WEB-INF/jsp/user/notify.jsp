@@ -19,7 +19,7 @@
   <div class="panel-heading">系统信息</div>
   <div class="panel-body" style="overflow-y:auto;height: 80%">
   <c:forEach items="${notifies }" var="notify">
-      <div class="media" style="border: 1px solid #EEEEEE;border-radius: 10px; ">
+      <div class="media" style="border: 1px solid #EEEEEE;border-radius: 10px; min-height: 75px">
     <div class="media-body">
     <h4 class="media-heading" style="margin-left: 2%">${notify.title}<span style="font-size: 10px;margin-left: 2%"><fmt:formatDate type="both" value="${notify.createtime}" /></span></h4>
     <div style="margin-left: 2%">

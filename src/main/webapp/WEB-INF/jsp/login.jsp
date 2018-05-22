@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="common.jspf"%>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/plugins/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/plugins/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 <style>
 body {
 	text-align: center;
@@ -85,7 +89,7 @@ body {
 					<div class="form-group">
 						<div class="input-group">
 							<span class="input-group-addon">密码</span> <input id="password"
-								name="password" type="text" class="form-control" />
+								name="password" type="password" class="form-control" />
 						</div>
 					</div>
 

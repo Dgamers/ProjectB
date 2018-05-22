@@ -9,4 +9,6 @@ public interface AnimationreviewService {
 	int insertAReview(Animationreview record);
 	
 	List<Animationreview>selectReviewByAid(Integer aid);
+	
+	Animationreview selectByPrimaryKey(Integer id);
 }

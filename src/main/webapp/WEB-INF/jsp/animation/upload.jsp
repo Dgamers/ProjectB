@@ -6,17 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../common.jspf"%>
     <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap-select.min.css" />	
+	href="${pageContext.request.contextPath}/plugins/boostrapselect/css/bootstrap-select.min.css" />	
     <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/bootstrap-select.js"></script>
+	src="${pageContext.request.contextPath}/plugins/boostrapselect/js/bootstrap-select.js"></script>
 	<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/i18n/defaults-ar_AR.js"></script>
+	src="${pageContext.request.contextPath}/plugins/boostrapselect/i18n/defaults-ar_AR.js"></script>
 	<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/fileinput/css/fileinput.min.css" />	
+	href="${pageContext.request.contextPath}/plugins/fileinput/css/fileinput.min.css" />	
 	<script type="text/javascript"
-	src="${pageContext.request.contextPath}/fileinput/js/fileinput.min.js"></script>
+	src="${pageContext.request.contextPath}/plugins/fileinput/js/fileinput.min.js"></script>
 	<script type="text/javascript"
-	src="${pageContext.request.contextPath}/fileinput/js/locales/zh.js"></script>
+	src="${pageContext.request.contextPath}/plugins/fileinput/js/locales/zh.js"></script>
 	
 <script type="text/javascript">
 $(function(){ 

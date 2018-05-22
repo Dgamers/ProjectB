@@ -4,22 +4,14 @@
 <!-- 导入 css-->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-<!-- 导入bootstrapValidator.css"-->
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/bootstrapvalidator/dist/css/bootstrapValidator.css" />
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/jquery-confirm.min.css" />
+	href="${pageContext.request.contextPath}/plugins/jqueryconfirm/css/jquery-confirm.min.css" />
 <!--导入jquery.js-->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
 <!--导入bootstrap.js-->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-<!--导入bootstrapValidator.js-->
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
-
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/jquery-confirm.min.js"></script>
+	src="${pageContext.request.contextPath}/plugins/jqueryconfirm/js/jquery-confirm.min.js"></script>
 	

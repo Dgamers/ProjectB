@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../common.jspf"%>
-<style>
-</style>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/plugins/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/plugins/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 <script type="text/javascript">
 
 	$(function() {

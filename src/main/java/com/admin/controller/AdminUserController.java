@@ -55,8 +55,9 @@ public class AdminUserController
 	        @RequestParam(value = "search_phone", required = false) String search_phone,
 	        @RequestParam(value = "start_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date start_time,
 	        @RequestParam(value = "end_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date end_time,
-	        Integer search_status)
+	        Integer search_status)throws Exception
 	{
+		search_name=new String(search_name.getBytes("ISO8859-1"), "UTF-8");
 		List<User> users = userService.selectByPage(pageSize, pageNumber, search_name, search_email, search_phone,
 		        start_time, end_time, search_status);
 		PageInfo<User> liInfo = new PageInfo<User>(users);

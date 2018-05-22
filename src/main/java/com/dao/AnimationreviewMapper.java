@@ -9,4 +9,6 @@ public interface AnimationreviewMapper {
 	int insertAReview(Animationreview record);
 	
 	List<Animationreview>selectReviewByAid(Integer aid);
+	
+	Animationreview selectByPrimaryKey(Integer id);
 }

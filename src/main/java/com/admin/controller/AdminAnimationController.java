@@ -82,9 +82,10 @@ public class AdminAnimationController
 	        @RequestParam(value = "search_category", required = false) Integer search_category,
 	        @RequestParam(value = "start_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date start_time,
 	        @RequestParam(value = "end_time", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date end_time,
-	        Integer search_status)
+	        Integer search_status)throws Exception
 
 	{
+		search_title=new String(search_title.getBytes("ISO8859-1"), "UTF-8");
 		List<Animation> animations = animationService.selectBySearch(pageSize, pageNumber, search_title, search_user,
 		        search_category, start_time, end_time, search_status);
 		PageInfo<Animation> info = new PageInfo<Animation>(animations);

@@ -5,8 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../common.jspf"%>
-<style>
-</style>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/plugins/bootstrapvalidator/dist/css/bootstrapValidator.css" />
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath}/plugins/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
 <script type="text/javascript">
 
 	$(function() {
@@ -36,7 +38,6 @@
 					        },
 					    }
 					});
-                  alert(data['data']['name'])
                   $("#username").text(data['data']['name']);
 				}
 			});
@@ -90,7 +91,7 @@
 				<form  id="info" class="form-horizontal" method="post" >
 				<input type="hidden" name="id" id="id" value="${sessionScope.user.id }">
 					<div class="form-group">
-						<label for="name" class="col-sm-2 control-label">真实姓名</label>
+						<label for="name" class="col-sm-2 control-label">用户名</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="name" id="name" value="${sessionScope.user.name }">
 						</div>

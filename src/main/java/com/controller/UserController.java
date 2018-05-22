@@ -48,14 +48,14 @@ public class UserController {
 	private UserOperationService userOperationService;
 
 	@RequestMapping("/insertuser")
-	public String insertuser(User user) {
-		user.setName(user.getName());
+	public String insertuser(User user)throws Exception {
+		user.setName(new String(user.getName().getBytes("ISO8859-1"), "UTF-8"));
 		user.setCreatetime(new Date());
 		user.setUpdatetime(new Date());
 		user.setStatus(1);
-		Integer no=userService.insertSelective(user);
+		userService.insertSelective(user);
 		UserOperation userOperation=new UserOperation();
-		userOperation.setUserid(no);
+		userOperation.setUserid(user.getId());
 		userOperation.setCreatetime(new Date());
 		userOperation.setUpdatetime(new Date());
 		userOperationService.insert(userOperation);

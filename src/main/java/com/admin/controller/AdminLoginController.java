@@ -40,4 +40,9 @@ public class AdminLoginController {
 		return "admin/login";
 	}
 	
+	@RequestMapping("/outlogin")
+	public String outlogin(HttpSession session) {
+		session.removeAttribute("admin");
+		return "admin/login";
+	}
 }

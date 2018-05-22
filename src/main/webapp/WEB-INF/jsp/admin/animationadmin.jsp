@@ -7,11 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@include file="../common.jspf"%>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap-table.min.css" />
+	href="${pageContext.request.contextPath}/plugins/boostraptable/css/bootstrap-table.min.css" />
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/bootstrap-table.min.js"></script>
+	src="${pageContext.request.contextPath}/plugins/boostraptable/js/bootstrap-table.min.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.min.js"></script>
+	src="${pageContext.request.contextPath}/plugins/boostraptable/js/bootstrap-table-zh-CN.min.js"></script>
 <title>动画管理</title>
 <script type="text/javascript">
 function changeDateFormat(cellval) {

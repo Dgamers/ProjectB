@@ -27,4 +27,9 @@ public class AnimationreviewServiceImpl  implements AnimationreviewService{
 		return null;
 	}
 
+	@Override
+	public Animationreview selectByPrimaryKey(Integer id) {
+		return animationreviewMapper.selectByPrimaryKey(id);
+	}
+
 }

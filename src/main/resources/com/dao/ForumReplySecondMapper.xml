@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.ForumReplySecondMapper" >
+  <resultMap id="BaseResultMap" type="com.pojo.ForumReplySecond" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="UserID" property="userid" jdbcType="INTEGER" />
+    <result column="reUserID" property="reuserid" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="layerID" property="layerid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <insert id="insertForumReplySecond" parameterType="com.pojo.ForumReplySecond">
+<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+select LAST_INSERT_ID()
+</selectKey>
+insert into forum_reply_second(UserID,reUserID,createtime,layerID,content)
+values(#{userid,jdbcType=INTEGER},
+#{reuserid,jdbcType=INTEGER},#{createtime,jdbcType=TIMESTAMP},#{layerid,jdbcType=INTEGER},#{content,jdbcType=LONGVARCHAR})
+</insert>
+
+<select id="selectSecondReplyByLid" parameterType="java.lang.Integer" resultType="com.pojo.ForumReplySecond">
+SELECT
+	f.*, u.`name` username,
+	u.picture userpicture,
+	ru.`name` reusername,
+	ru.picture reuserpicture
+FROM
+	forum_reply_second f
+LEFT JOIN `user` u ON f.UserID = u.ID
+LEFT JOIN `user` ru ON f.reUserID = ru.ID
+where f.layerID=#{lid}
+order by f.createtime 
+</select>
+<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+delete from forum_reply_second where ID=#{id}
+</delete>
+</mapper>
